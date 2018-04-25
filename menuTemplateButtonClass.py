@@ -11,8 +11,8 @@ BLACK = (57, 57, 58)
 ORANGE = (255, 133, 82)
 BLUE = (41, 115, 115)
 
-SCREENWIDTH = 120
-SCREENHEIGHT = 100
+SCREENWIDTH = 800
+SCREENHEIGHT = 600
 size = (SCREENWIDTH, SCREENHEIGHT)
 screen = pygame.display.set_mode(size)
 
@@ -56,7 +56,7 @@ class Button():
         self.bg = self.color
         pos = pygame.mouse.get_pos()
         if self.rect.collidepoint(pos):
-            self.bg = GRAY  # mouseover color
+            self.bg = BLACK  # mouseover color
 
     def call_back(self):
         """Runs a function when clicked"""
@@ -98,13 +98,14 @@ carryOn = True
 clock = pygame.time.Clock()
 
 #create button objects
-button_01 = Button("Next", (SCREENWIDTH/2, SCREENHEIGHT/3), my_next_function)
-button_02 = Button("Previous", (SCREENWIDTH/2, SCREENHEIGHT/3), my_previous_function)
-button_03 = Button("Quit", (SCREENWIDTH/2, SCREENHEIGHT*2/3), my_quit_function, bg=(50, 200, 20))
+button_hello = Button("Hello", (SCREENWIDTH/2, SCREENHEIGHT*2/5), my_next_function)
+button_back = Button("Back", (SCREENWIDTH/2, SCREENHEIGHT*4/5), my_previous_function)
+button_quit = Button("Quit", (SCREENWIDTH/2, SCREENHEIGHT*4/5), my_quit_function, bg=(50, 200, 20))
+button_settings = Button("Settings", (SCREENWIDTH/2, SCREENHEIGHT*3/5), my_next_function)
 
 #arrange button groups depending on level
-level1_buttons = [button_01, button_03]
-level2_buttons = [button_02, button_03]
+level1_buttons = [button_hello, button_quit, button_settings]
+level2_buttons = [button_back]
 
 #---------Main Program Loop----------
 while carryOn:
