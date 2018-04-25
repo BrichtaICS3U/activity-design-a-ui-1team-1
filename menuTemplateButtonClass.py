@@ -64,7 +64,7 @@ class Button():
 
 def my_shell_function():
     """A generic function that prints something in the shell"""
-    print('Fire the nukes!')
+    print('Hello!')
 
 def my_next_function():
     """A function that advances to the next level"""
@@ -98,7 +98,7 @@ carryOn = True
 clock = pygame.time.Clock()
 
 #create button objects
-button_hello = Button("Hello", (SCREENWIDTH/2, SCREENHEIGHT*2/5), my_next_function)
+button_hello = Button("Hello", (SCREENWIDTH/2, SCREENHEIGHT*2/5), my_shell_function)
 button_back = Button("Back", (SCREENWIDTH/2, SCREENHEIGHT*4/5), my_previous_function)
 button_quit = Button("Quit", (SCREENWIDTH/2, SCREENHEIGHT*4/5), my_quit_function, bg=(50, 200, 20))
 button_settings = Button("Settings", (SCREENWIDTH/2, SCREENHEIGHT*3/5), my_next_function)
