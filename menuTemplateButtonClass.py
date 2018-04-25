@@ -5,11 +5,11 @@ import pygame, sys
 pygame.init()
 
 # Define some colours
-WHITE = (255, 255, 255)
-GRAY = (127, 127, 127)
-BLACK = (0, 0, 0)
-RED = (255, 0, 0)
-BLUE = (0, 0, 255)
+WHITE = (230, 230, 230)
+YELLOW = (233, 215, 88)
+BLACK = (57, 57, 58)
+ORANGE = (255, 133, 82)
+BLUE = (41, 115, 115)
 
 SCREENWIDTH = 120
 SCREENHEIGHT = 100
@@ -28,7 +28,7 @@ class Button():
        font_name = name of font
        font_size = size of font
     """
-    def __init__(self, txt, location, action, bg=WHITE, fg=BLACK, size=(80, 30), font_name="Segoe Print", font_size=16):
+    def __init__(self, txt, location, action, bg=WHITE, fg=BLACK, size=(80, 30), font_name="Gothic", font_size=16):
         self.color = bg  # the static (normal) color
         self.bg = bg  # actual background color, can change on mouseover
         self.fg = fg  # text color
