@@ -16,6 +16,16 @@ SCREENHEIGHT = 600
 size = (SCREENWIDTH, SCREENHEIGHT)
 screen = pygame.display.set_mode(size)
 
+fontTitle = pygame.font.Font('freesansbold.ttf', 55)
+textSurfaceTitle = fontTitle.render('My Awesome Game!', True, BLACK) 
+textRectTitle = textSurfaceTitle.get_rect()
+textRectTitle.center = (400, 100)   # place the centre of the text
+
+fontSetting = pygame.font.Font('freesansbold.ttf', 32)
+textSurfaceSetting = fontSetting.render('Settings', True, BLACK) 
+textRectSetting = textSurfaceSetting.get_rect()
+textRectSetting.center = (400, 100)   # place the centre of the text
+
 class Button():
     """This is a class for a generic button.
     
@@ -28,7 +38,7 @@ class Button():
        font_name = name of font
        font_size = size of font
     """
-    def __init__(self, txt, location, action, bg=WHITE, fg=BLACK, size=(80, 30), font_name="Gothic", font_size=16):
+    def __init__(self, txt, location, action, bg=WHITE, fg=BLACK, size=(175, 75), font_name="Gothic", font_size=35):
         self.color = bg  # the static (normal) color
         self.bg = bg  # actual background color, can change on mouseover
         self.fg = fg  # text color
@@ -98,10 +108,10 @@ carryOn = True
 clock = pygame.time.Clock()
 
 #create button objects
-button_hello = Button("Hello", (SCREENWIDTH/2, SCREENHEIGHT*2/5), my_shell_function)
-button_back = Button("Back", (SCREENWIDTH/2, SCREENHEIGHT*4/5), my_previous_function)
-button_quit = Button("Quit", (SCREENWIDTH/2, SCREENHEIGHT*4/5), my_quit_function, bg=(50, 200, 20))
-button_settings = Button("Settings", (SCREENWIDTH/2, SCREENHEIGHT*3/5), my_next_function)
+button_hello = Button("Hello", (SCREENWIDTH/2, SCREENHEIGHT*2/5), my_shell_function, bg=YELLOW)
+button_back = Button("Back", (SCREENWIDTH/2, SCREENHEIGHT*4/5), my_previous_function, bg=WHITE)
+button_quit = Button("Quit", (SCREENWIDTH/2, SCREENHEIGHT*4/5), my_quit_function, bg=ORANGE)
+button_settings = Button("Settings", (SCREENWIDTH/2, SCREENHEIGHT*3/5), my_next_function, bg=BLUE)
 
 #arrange button groups depending on level
 level1_buttons = [button_hello, button_quit, button_settings]
@@ -127,9 +137,13 @@ while carryOn:
     if level == 1:
         for button in level1_buttons:
             button.draw()
+        screen.blit(textSurfaceTitle, textRectTitle)
     elif level == 2:
         for button in level2_buttons:
             button.draw()
+        screen.blit(textSurfaceSetting, textRectSetting)
+
+#Text
 
     # Update the screen with queued shapes
     pygame.display.flip()
