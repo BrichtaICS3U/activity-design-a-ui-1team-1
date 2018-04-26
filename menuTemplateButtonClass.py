@@ -16,6 +16,8 @@ SCREENHEIGHT = 600
 size = (SCREENWIDTH, SCREENHEIGHT)
 screen = pygame.display.set_mode(size)
 
+background = pygame.image.load("background.jpg")
+
 fontTitle = pygame.font.Font('freesansbold.ttf', 55)
 textSurfaceTitle = fontTitle.render('My Awesome Game!', True, BLACK) 
 textRectTitle = textSurfaceTitle.get_rect()
@@ -42,7 +44,7 @@ class Button():
        font_name = name of font
        font_size = size of font
     """
-    def __init__(self, txt, location, action, bg=WHITE, fg=BLACK, size=(175, 75), font_name="Gothic", font_size=35):
+    def __init__(self, txt, location, action, bg=background, fg=BLACK, size=(175, 75), font_name="Gothic", font_size=35):
         self.color = bg  # the static (normal) color
         self.bg = bg  # actual background color, can change on mouseover
         self.fg = fg  # text color
@@ -126,8 +128,8 @@ button_hello = Button("Hello", (SCREENWIDTH/2, SCREENHEIGHT*2/5), my_shell_funct
 button_back = Button("Back", (SCREENWIDTH/2, SCREENHEIGHT*4/5), my_previous_function, bg=WHITE)
 button_quit = Button("Quit", (SCREENWIDTH/2, SCREENHEIGHT*4/5), my_quit_function, bg=ORANGE)
 button_settings = Button("Settings", (SCREENWIDTH/2, SCREENHEIGHT*3/5), my_next_function, bg=BLUE)
-button_soundOn = Button("SOUND ON", (SCREENWIDTH/2, SCREENHEIGHT*2/5), my_shell_function2, bg = YELLOW)
-button_soundOff = Button("SOUND OFF", (SCREENWIDTH/2, SCREENHEIGHT*3/5), my_shell_function3, bg = ORANGE)
+button_soundOn = Button("Sound On", (SCREENWIDTH/2, SCREENHEIGHT*2/5), my_shell_function2, bg = YELLOW)
+button_soundOff = Button("Sound Off", (SCREENWIDTH/2, SCREENHEIGHT*3/5), my_shell_function3, bg = ORANGE)
 
 #arrange button groups depending on level
 level1_buttons = [button_hello, button_quit, button_settings]
@@ -148,7 +150,7 @@ while carryOn:
     # --- Draw code goes here
 
     # Clear the screen to white
-    screen.fill(WHITE)
+    screen.blit(background, (0, 0))
 
     # Draw buttons
     if level == 1:
