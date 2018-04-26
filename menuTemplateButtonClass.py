@@ -21,10 +21,14 @@ textSurfaceTitle = fontTitle.render('My Awesome Game!', True, BLACK)
 textRectTitle = textSurfaceTitle.get_rect()
 textRectTitle.center = (400, 100)   # place the centre of the text
 
-fontSetting = pygame.font.Font('freesansbold.ttf', 32)
+fontSetting = pygame.font.Font('freesansbold.ttf', 55)
 textSurfaceSetting = fontSetting.render('Settings', True, BLACK) 
 textRectSetting = textSurfaceSetting.get_rect()
 textRectSetting.center = (400, 100)   # place the centre of the text
+
+pygame.mixer.pre_init(frequency=44100, size=-16, channels=2, buffer=4096)
+pygame.mixer.music.load('2-Best-Elevator-Music-Royalty-Free.mp3')
+pygame.mixer.music.play(-1) #-1 means loops for ever, 0 means play just once)
 
 class Button():
     """This is a class for a generic button.
@@ -76,6 +80,16 @@ def my_shell_function():
     """A generic function that prints something in the shell"""
     print('Hello!')
 
+def my_shell_function2():
+    """A generic function that prints something in the shell"""
+    print('sound is ON')
+    pygame.mixer.music.unpause()
+
+def my_shell_function3():
+    """A generic function that prints something in the shell"""
+    print('sound is OFF')
+    pygame.mixer.music.pause()
+
 def my_next_function():
     """A function that advances to the next level"""
     global level
@@ -112,10 +126,12 @@ button_hello = Button("Hello", (SCREENWIDTH/2, SCREENHEIGHT*2/5), my_shell_funct
 button_back = Button("Back", (SCREENWIDTH/2, SCREENHEIGHT*4/5), my_previous_function, bg=WHITE)
 button_quit = Button("Quit", (SCREENWIDTH/2, SCREENHEIGHT*4/5), my_quit_function, bg=ORANGE)
 button_settings = Button("Settings", (SCREENWIDTH/2, SCREENHEIGHT*3/5), my_next_function, bg=BLUE)
+button_soundOn = Button("SOUND ON", (SCREENWIDTH/2, SCREENHEIGHT*2/5), my_shell_function2, bg = YELLOW)
+button_soundOff = Button("SOUND OFF", (SCREENWIDTH/2, SCREENHEIGHT*3/5), my_shell_function3, bg = ORANGE)
 
 #arrange button groups depending on level
 level1_buttons = [button_hello, button_quit, button_settings]
-level2_buttons = [button_back]
+level2_buttons = [button_back,button_soundOn,button_soundOff ]
 
 #---------Main Program Loop----------
 while carryOn:
@@ -127,6 +143,7 @@ while carryOn:
             mousebuttondown(level)
 
     # --- Game logic goes here
+
 
     # --- Draw code goes here
 
